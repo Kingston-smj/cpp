@@ -4,6 +4,6 @@ int main(){
     
     std::string name = "kingston";
     std::cout << "hope?" << '\n';
-    std::cout << name;
+    std::cout << name << '\n' ;
     return 0;
 }
