@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    string questions[] = {"whweyiwf", "vwcbhwc?" , "scbshcs"};
-    string answer [] = {"hscs", "scbhsc", "scbshc"};
+    string questions[] = {"place holder1? ", "player holder 2?" , "place holder 3?"};
+    string answer [] = {"place holder1", "place holder2", "place holder3"};
     string response[3] = {};
     int count = 0;
 
