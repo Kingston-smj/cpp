@@ -28,8 +28,6 @@ int main()
         cout<< "Do you want to play again?";
         cin>> response;
     }while(response == "yes" || response == "y");
-
     cout<< "Thank you for playing\n";
    return 0;
 }
- 

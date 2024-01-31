@@ -41,7 +41,6 @@ char get_computer_choice(){
         case 2: return 'p';
         case 3: return 's';
      }
-    return 0;
 }
 void show_choice(char choice){
 
