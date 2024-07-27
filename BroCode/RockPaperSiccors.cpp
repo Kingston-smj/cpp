@@ -1,44 +1,46 @@
 #include <iostream>
-#include <cmath>
+#include <ctime>
+#include <cctype>
+
 using namespace std;
 
-char computer_response (char response);
-char user_input (char response);
-char winner (char player, char computer);
+char computer_response (); //computer input
+// char user_input (char response); // not really needed....
+char winner (char player, char computer); // choose winner 
+char PlayAgain (char response); // play again function
 int main(){
-    char player, computer;
+    char response, player, computer;
+    string winner;
     do{
-
-    }while(player);
-    cout<< "Choose Rock (R), Paper (P), Scissors (S): ";
-    cin>> response;
-    response = (toupper) response;
-    if(response == R  || response == P || response == S){
-        switch(response){
-            case 'R':
-                cout<< "You chose rock";
-            break;
-            case 'P':
-                cout<< "You chose paper";
-            break;
-            case 'S':
-                cout<< "You chose scizzors";
+        cout<< "Choose Rock (R), Paper (P), Scissors (S): ";
+        cin>> response;
+        response = toupper(response);
+        if(response == 'R'  || response == 'P' || response == 'S'){
+            switch(response){
+                case 'R':
+                    cout<< "You chose rock \n";
+                    break;
+                case 'P':
+                    cout<< "You chose paper \n";
+                    break;
+                case 'S':
+                    cout<< "You chose scissors \n";
+                    break;
+            }
         }
+        else{
+            cout<< "Enter a proper respose"<< '\n';
+        }
+        
+    //  char user_input(response);
 
-    }
-    else{
-        cout<< "Enter a proper respose";  
-    }
+    }while (response != 'R' && response != 'S' && response != 'P');
+    computer = computer_response();
+    winner = char winner (char player, char computer);
     
-    char user_input(response);
-
-    char computer_response (response);
-
-
-
     return 0;
 }
-char user_input (char response){
+/*char user_input (char response){
     switch(response){
         case 'r' || 'R':
             cout<< "You chose rock";
@@ -46,4 +48,11 @@ char user_input (char response){
 
 
     return response;
-}
+}*/
+char computer_response(){
+    srand  (time (0));
+    int num = rand%4;
+    switch(num){
+        case 1: return 'R';
+        case 2: return 'P';
+        case 3: return 'S';}}
