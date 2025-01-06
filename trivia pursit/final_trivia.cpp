@@ -235,7 +235,7 @@ int getIntInput(const std::string& prompt, int min, int max) {
 }
 
 int main() {
-    std::cout << "Welcome to the Quiz Game!\n";
+    std::cout << "Welcome to Trivial Pursuit! \n By Adesola Oluwaseyi Gabriel CPE/22/9983\n";
     
     std::string playerName;
     std::cout << "Enter your name: ";

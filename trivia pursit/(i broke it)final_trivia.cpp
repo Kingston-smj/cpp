@@ -152,92 +152,6 @@ public:
     }
 };
 
-class HighScoreManager {
-private:
-    std::string filename;
-
-public:
-    HighScoreManager(const std::string& filename) : filename(filename) {}
-
-    // Function to load high scores from the CSV file
-    std::vector<std::pair<std::string, int>> loadScores() {
-        std::vector<std::pair<std::string, int>> scores;
-        std::ifstream file(filename);
-        std::string line;
-
-        if (!file.is_open()) {
-            std::cerr << "High score file not found. Creating new high score file.\n";
-            return scores;  // Return empty if no file exists
-        }
-
-        while (std::getline(file, line)) {
-            std::stringstream ss(line);
-            std::string name;
-            int score;
-
-            if (ss >> name >> score) {
-                scores.emplace_back(name, score);
-            }
-        }
-
-        file.close();
-        return scores;
-    }
-
-    // Function to save high scores to the CSV file
-    void saveScores(const std::vector<std::pair<std::string, int>>& scores) {
-        std::ofstream file(filename);
-
-        if (!file.is_open()) {
-            std::cerr << "Error: Could not open high score file for writing.\n";
-            return;
-        }
-
-        for (const auto& entry : scores) {
-            file << entry.first << "," << entry.second << "\n";
-        }
-
-        file.close();
-    }
-
-    // Function to add a new score
-    void addScore(const std::string& playerName, int score) {
-        // Load existing scores
-        std::vector<std::pair<std::string, int>> scores = loadScores();
-
-        // Add the new score
-        scores.emplace_back(playerName, score);
-
-        // Sort scores in descending order
-        std::sort(scores.begin(), scores.end(), [](const auto& a, const auto& b) {
-            return a.second > b.second;
-        });
-
-        // Keep only the top 5 scores
-        if (scores.size() > 5) {
-            scores.resize(5);
-        }
-
-        // Save the updated scores
-        saveScores(scores);
-    }
-
-    // Function to display the high scores
-    void displayScores() {
-        std::vector<std::pair<std::string, int>> scores = loadScores();
-
-        if (scores.empty()) {
-            std::cout << "No high scores available.\n";
-            return;
-        }
-
-        std::cout << "Top 5 High Scores:\n";
-        for (size_t i = 0; i < scores.size(); ++i) {
-            std::cout << i + 1 << ". " << scores[i].first << " - " << scores[i].second << "\n";
-        }
-    }
-};
-
 class GameSetup {
 private:
     std::string playerName;
@@ -313,6 +227,7 @@ public:
     if (viewScores == 'y' || viewScores == 'Y') {
         highScoreManager.displayScores();
 
+    }
     }
 };
 
